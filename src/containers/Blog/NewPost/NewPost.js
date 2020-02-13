@@ -11,7 +11,7 @@ class NewPost extends Component {
   }
 
   componentDidMount () {
-    console.log('[Post.js] this.props', this.props);
+    console.log('[Post.js] componentDidMount : this.props', this.props);
   }
 
   postDataHandler = () => {

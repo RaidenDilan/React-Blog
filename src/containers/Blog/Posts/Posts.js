@@ -12,7 +12,8 @@ class Posts extends Component {
   }
 
   componentDidMount() {
-    console.log('[Posts.js] this.props', this.props);
+    console.log('[Posts.js] componentDidMount : this.props', this.props);
+
     axios
       .get('/posts')
       .then(response => {
@@ -48,6 +49,7 @@ class Posts extends Component {
           author={ post.author }
           key={ post.id }
           clicked={ () => this.postSelectedHandler(post.id) }
+          { ...this.props }
         />;
       });
     }
