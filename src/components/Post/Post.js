@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Post.css';
 
@@ -13,5 +14,11 @@ const post = (props) => (
     </div>
   </article>
 );
+
+post.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  clicked: PropTypes.func.isRequired
+};
 
 export default post;
