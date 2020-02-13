@@ -47,7 +47,7 @@ class Posts extends Component {
       posts = this.state.posts.map(post => {
         return (
           <Link
-            to={ '/' + post.id }
+            to={ '/posts/' + post.id }
             key={ post.id }>
             <Post
               title={ post.title }

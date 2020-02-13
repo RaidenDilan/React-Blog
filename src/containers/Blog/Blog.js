@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
 
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -18,9 +18,8 @@ class Blog extends Component {
                   to='/'
                   exact
                   activeClassName='my-active'
-                  activeStyle={ { color: '#FA923F', textDecoration: 'underline' } }
-                >
-                Home
+                  activeStyle={ { color: '#FA923F', textDecoration: 'underline' } }>
+                  Home
                 </NavLink>
               </li>
               <li>
@@ -29,8 +28,7 @@ class Blog extends Component {
                     pathname: '/new-post',
                     hash: '#submit',
                     search: '?quick-submit=true'
-                  } }
-                >
+                  } }>
                   New Post
                 </NavLink>
               </li>
@@ -42,17 +40,16 @@ class Blog extends Component {
         <Route
           path='/'
           exact
-          component={ Posts }
-        />
-        <Route
-          path='/new-post'
-          component={ NewPost }
-        />
-        <Route
-          path='/:id'
-          exact
-          component={ FullPost }
-        />
+          component={ Posts } />
+        <Switch>
+          <Route
+            path='/new-post'
+            component={ NewPost } />
+          <Route
+            path='/posts/:id'
+            exact
+            component={ FullPost } />
+        </Switch>
       </div>
     );
   }
