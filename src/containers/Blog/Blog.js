@@ -46,7 +46,7 @@ class Blog extends Component {
             path='/new-post'
             component={ NewPost } />
           <Route
-            path='/posts/:id'
+            path='/:id'
             exact
             component={ FullPost } />
         </Switch>

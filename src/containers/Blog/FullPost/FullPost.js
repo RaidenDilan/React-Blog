@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 
 import './FullPost.css';
 
@@ -55,9 +54,5 @@ class FullPost extends Component {
     return post;
   }
 }
-
-FullPost.propTypes = {
-  id: PropTypes.number
-};
 
 export default FullPost;
