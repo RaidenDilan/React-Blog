@@ -22,7 +22,7 @@ class FullPost extends Component {
           .get('https://jsonplaceholder.typicode.com/posts/' + this.props.id)
           .then(response => {
             this.setState({ loadedPost: response.data });
-            // console.log('[FullPost.js] componentDidUpdate', response);
+            console.log('[FullPost.js] componentDidUpdate', response);
           });
       }
     }
@@ -37,7 +37,7 @@ class FullPost extends Component {
       post = (
         <div className='FullPost'>
           <h1>{ this.state.loadedPost.title }</h1>
-          <p>{ this.state.loadedPost.content }</p>
+          <p>{ this.state.loadedPost.body }</p>
           <div className='Edit'>
             <button
               className='Delete'
