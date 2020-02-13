@@ -12,6 +12,7 @@ class Posts extends Component {
   }
 
   componentDidMount() {
+    console.log('[Posts.js] this.props', this.props);
     axios
       .get('/posts')
       .then(response => {
