@@ -12,7 +12,7 @@ class Blog extends Component {
     selectedPostId: null
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios
       .get('https://jsonplaceholder.typicode.com/posts')
       .then(response => {
@@ -26,7 +26,7 @@ class Blog extends Component {
         });
 
         this.setState({ posts: updatedPosts });
-        // console.log(response);
+        // console.log('[Blog.js] componentDidMount', response);
       });
   }
 
