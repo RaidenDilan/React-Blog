@@ -8,7 +8,7 @@ import axios from 'axios';
 // request => Object
 // use() => register new interceptor
 // => use() interceptor takes a function as an input which recieves the config/request
-axios.interceptors.request.use(request => {
+var myInterceptor = axios.interceptors.request.use(request => {
   console.log('[index.js] axios interceptors request', request);
 
   // We can edit request config e.g. headers
@@ -19,13 +19,15 @@ axios.interceptors.request.use(request => {
   return Promise.reject(error);
 });
 
+axios.interceptors.request.eject(myInterceptor);
+
 axios.interceptors.response.use(response => {
   console.log('[index.js] axios interceptors response', response);
 
   // We can edit response config e.g. headers
   return response;
 }, error => {
-  console.log('[index.js] axios interceptors response rror', error);
+  console.log('[index.js] axios interceptors response error', error);
   // we return Promise reject error to forward it  to our response where we wrote in our component, where we can handle it withour catch method.
   return Promise.reject(error);
 });
