@@ -15,11 +15,13 @@ class FullPost extends Component {
       .then(response => console.log('[FullPost.js] deletePostHandler', response));
   }
 
-  componentDidUpdate() {
-    if (this.props.id) {
+  componentDidMount() {
+    console.log('[FullPost.js] componentDidMount', this.props);
+
+    if (this.props.match.params.id) {
       if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
         axios
-          .get('/posts/' + this.props.id)
+          .get('/posts/' + this.props.match.params.id)
           .then(response => {
             this.setState({ loadedPost: response.data });
             console.log('[FullPost.js] componentDidUpdate', response);
