@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
 
+import './Blog.css';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
-import './Blog.css';
+import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
   render () {
@@ -53,6 +54,11 @@ class Blog extends Component {
         <Route
           path='/new-post'
           component={ NewPost }
+        />
+        <Route
+          path='/:id'
+          exact
+          component={ FullPost }
         />
       </div>
     );
