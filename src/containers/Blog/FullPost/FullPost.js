@@ -8,17 +8,23 @@ class FullPost extends Component {
     loadedPost: null
   }
 
-  deletePostHandler = () => {
-    axios
-      .delete('/posts/' + this.props.id)
-      .then(response => console.log('[FullPost.js] deletePostHandler', response));
-  }
-
   componentDidMount() {
     console.log('[FullPost.js] componentDidMount', this.props);
+    this.loadData();
+  }
 
+  componentDidUpdate() {
+    this.loadData();
+  }
+
+  loadData() {
     if (this.props.match.params.id) {
-      if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !== this.props.id)) {
+      if (
+        !this.state.loadedPost ||
+        (this.state.loadedPost &&
+          this.state.loadedPost.id !== +this.props.match.params.id // != We just just for the value not the prop type // We can also add a + infront of 'this.props.match.params.id' to covert it to a number
+        )
+      ) {
         axios
           .get('/posts/' + this.props.match.params.id)
           .then(response => {
@@ -29,10 +35,16 @@ class FullPost extends Component {
     }
   }
 
+  deletePostHandler = () => {
+    axios
+      .delete('/posts/' + this.props.match.params.id)
+      .then(response => console.log('[FullPost.js] deletePostHandler', response));
+  }
+
   render () {
     let post = <p style={ { textAlign: 'center' } }>Please select a Post!</p>;
 
-    if (this.props.id) post = <p style={ { textAlign: 'center' } }>Loading...!</p>;
+    if (this.props.match.params.id) post = <p style={ { textAlign: 'center' } }>Loading...!</p>;
 
     if (this.state.loadedPost) {
       post = (
