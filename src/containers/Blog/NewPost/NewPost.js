@@ -27,8 +27,11 @@ class NewPost extends Component {
     axios
       .post('/posts', post)
       .then(response => {
-        // console.log('[NewPost.js] postDataHandler', response);
-        this.setState({ submitted: true });
+        console.log('[NewPost.js] postDataHandler', response);
+
+        // this.props.history.push('/posts');
+        this.props.history.replace('/posts'); // replace is basically like redirect
+        // this.setState({ submitted: true });
       });
   }
 
@@ -36,7 +39,7 @@ class NewPost extends Component {
     let redirect = null;
 
     if (this.state.submitted) redirect = <Redirect to='/posts' />;
-    
+
     return (
       <div className='NewPost'>
         { redirect }
